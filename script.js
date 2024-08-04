@@ -110,6 +110,7 @@ function calculate() {
         const result = operate(operator, firstNumber, secondNumber);
         display.innerText = result;
         firstNumber = result;
+        result += display.innerText;
         operator = null;
         secondNumber = null;
         shouldResetDisplay = true;
