@@ -93,14 +93,12 @@ function handleOperator(op) {
         firstNumber = parseFloat(display.innerText);
         operator = op;
         shouldResetDisplay = true;
-    } else if (operator) {
+    } else {
         calculate();
         operator = op;
-        firstNumber = parseFloat(display.innerText);
         shouldResetDisplay = true;
     }
 }
-
 
 
 //This function performs the actual calculation
@@ -110,9 +108,8 @@ function calculate() {
         const result = operate(operator, firstNumber, secondNumber);
         display.innerText = result;
         firstNumber = result;
-        result += display.innerText;
         operator = null;
-        secondNumber = null;
         shouldResetDisplay = true;
     }
 }
+
