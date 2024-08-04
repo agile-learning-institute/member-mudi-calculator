@@ -92,7 +92,6 @@ function handleOperator(op) {
     if (firstNumber === null) {
         firstNumber = parseFloat(display.innerText);
         operator = op;
-        firstNumber = parseFloat(display.innerText);
         shouldResetDisplay = true;
     } else if (operator) {
         calculate();
