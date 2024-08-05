@@ -7,6 +7,7 @@ let firstNumber = null;
 let operator = null;
 let secondNumber = null;
 let shouldResetDisplay = false;
+let shouldClearDisplay = false;
 
 
 // This add event listeners to all my buttons
@@ -72,20 +73,23 @@ function clear() {
     operator = null;
     secondNumber = null;
     shouldResetDisplay = false;
+    shouldClearDisplay = false;
 }
 
 
 
 // This function handles any number clicked by user
 function handleNumber(number) {
-    if (display.innerText === '0' || shouldResetDisplay) {
+    if (shouldClearDisplay) {
+        display.innerText = number;
+        shouldClearDisplay = false;
+    } else if (display.innerText === '0' || shouldResetDisplay) {
         display.innerText = number;
         shouldResetDisplay = false;
     } else {
         display.innerText += number;
     }
 }
-
 
 // This handles any opertoe clicked by the user
 function handleOperator(op) {
@@ -110,6 +114,7 @@ function calculate() {
         firstNumber = result;
         operator = null;
         shouldResetDisplay = true;
+        shouldClearDisplay = true;
     }
 }
 
