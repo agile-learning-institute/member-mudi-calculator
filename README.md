@@ -9,7 +9,6 @@ This project is part of the **Foundations Course** from The Odin Project. The go
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
 - [Challenges and Learnings](#challenges-and-learnings)
-- [Extra Credit](#extra-credit)
 - [Future Improvements](#future-improvements)
 
 ## Introduction
