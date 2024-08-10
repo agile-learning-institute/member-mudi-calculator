@@ -6,9 +6,7 @@ const buttons = Array.from(document.querySelectorAll('.btn'));
 let firstNumber = null;
 let operator = null;
 let secondNumber = null;
-let shouldResetDisplay = false;
-let shouldClearDisplay = false;
-
+let result = null;
 
 // This add event listeners to all my buttons
 buttons.forEach(button => {
@@ -42,7 +40,7 @@ function multiply(a, b) {
 
 function divide(a, b) {
     if (b === 0) {
-        return "Error: Divition by zero"
+        return "Error: Division by zero"
     }
     return a / b;
 }
@@ -60,7 +58,7 @@ function operate(operator, a, b) {
         case '/':
             return divide(a, b);
         default:
-            return "The eperator you entered is invalid!";
+            return "The operator you entered is invalid!";
     }
 }
 
@@ -72,49 +70,34 @@ function clear() {
     firstNumber = null;
     operator = null;
     secondNumber = null;
-    shouldResetDisplay = false;
-    shouldClearDisplay = false;
 }
 
 
 
 // This function handles any number clicked by user
 function handleNumber(number) {
-    if (shouldClearDisplay) {
+    if (display.innerText == result) {
         display.innerText = number;
-        shouldClearDisplay = false;
-    } else if (display.innerText === '0' || shouldResetDisplay) {
+        result = null;
+    } else if (display.innerText === '0') {
         display.innerText = number;
-        shouldResetDisplay = false;
     } else {
-        display.innerText += number;
+      display.innerText += number;
     }
 }
 
-// This handles any opertoe clicked by the user
+// This handles any operator clicked by the user
 function handleOperator(op) {
-    if (firstNumber === null) {
-        firstNumber = parseFloat(display.innerText);
-        operator = op;
-        shouldResetDisplay = true;
-    } else {
-        calculate();
-        operator = op;
-        shouldResetDisplay = true;
-    }
+    firstNumber = parseFloat(display.innerText);
+    display.innerText += op;
+    operator = op;    
 }
 
 
 //This function performs the actual calculation
 function calculate() {
-    if (operator && firstNumber !== null) {
-        secondNumber = parseFloat(display.innerText);
-        const result = operate(operator, firstNumber, secondNumber);
-        display.innerText = result;
-        firstNumber = result;
-        operator = null;
-        shouldResetDisplay = true;
-        shouldClearDisplay = true;
-    }
-}
+    secondNumber = parseFloat(display.innerText.split(operator)[1].trim());
+    result = operate(operator, firstNumber, secondNumber);
+    display.innerText = result;
+  }
 
