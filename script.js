@@ -70,6 +70,7 @@ function clear() {
     firstNumber = null;
     operator = null;
     secondNumber = null;
+    result = null;
 }
 
 
