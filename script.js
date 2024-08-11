@@ -88,8 +88,13 @@ function handleNumber(number) {
 
 // This handles any operator clicked by the user
 function handleOperator(op) {
-    firstNumber = parseFloat(display.innerText);
-    display.innerText += op;
+    if (result !== null) {
+        firstNumber = result;
+        result = null;
+    } else {
+        firstNumber = parseFloat(display.innerText);
+    }
+    display.innerText += ` ${op} `;
     operator = op;    
 }
 
